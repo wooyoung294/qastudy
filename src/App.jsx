@@ -36,7 +36,7 @@ function App() {
     return (
     <>
       <div style={{ display: 'flex', justifyContent:'center', alignItems: 'center', gap: '10px' }}>
-          <h1>Playwright1</h1>
+          <h1>Playwright</h1>
           <div>
               <Table style={{border:'1px solid #ccc'}}>
                   <thead>
