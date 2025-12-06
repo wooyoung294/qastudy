@@ -1,0 +1,30 @@
+name: Trigger Study Playwright E2E on PR
+
+on:
+  pull_request:
+    branches: [ master ]
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  trigger-e2e:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out qastudy repo
+        uses: actions/checkout@v4
+
+      - name: Trigger Playwright tests in Study repo
+        env:
+          GH_TOKEN: ${{ secrets.STUDY_REPO_TOKEN }}
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            https://api.github.com/repos/wooyoung294/Study/actions/workflows/playwright.yml/dispatches \
+            -d '{
+              "ref": "master",
+              "inputs": {
+                "base_url": "https://blue-ground-0e078e000.3.azurestaticapps.net"
+              }
+            }'
