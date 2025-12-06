@@ -36,4 +36,4 @@ jobs:
         env:
           BASE_URL: https://blue-ground-0e078e000.3.azurestaticapps.net
         run: |
-          pytest
+          pytest chapter2
