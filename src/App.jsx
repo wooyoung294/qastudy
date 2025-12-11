@@ -87,10 +87,10 @@ function App() {
                       </tr>
                       <tr>
                           <td>
-                              <Button onClick={()=>clickHandle("textBtn")}>Text2</Button>
+                              <Button onClick={()=>clickHandle("textBtn")}>Text1</Button>
                           </td>
                           <td>
-                              {items.textBtn === true ? <span>get_by_text("Text2")</span> : null}
+                              {items.textBtn === true ? <span>get_by_text("Text1")</span> : null}
                           </td>
                       </tr>
                       <tr>
