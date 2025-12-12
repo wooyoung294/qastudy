@@ -47,7 +47,7 @@ function App() {
                   <tbody>
                       <tr>
                           <td>
-                              <Button id={"idBtn"} onClick={()=>clickHandle("idBtn")}>ID</Button>
+                              <Button id={"i2222dBtn"} onClick={()=>clickHandle("idBtn")}>ID</Button>
                           </td>
                           <td>
                               {items.idBtn === true ? <span>locator("#IdBtn")</span> : null}
