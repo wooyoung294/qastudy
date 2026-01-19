@@ -71,7 +71,7 @@ function App() {
                       </tr>
                       <tr>
                           <td>
-                              <Button className={"myClass"} onClick={()=>clickHandle("classBtn")}>Class</Button>
+                              <Button className={"myClass23"} onClick={()=>clickHandle("classBtn")}>Class</Button>
                           </td>
                           <td>
                               {items.classBtn === true ? <span>locator('.myClass')</span> : null}
