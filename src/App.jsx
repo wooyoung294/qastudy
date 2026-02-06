@@ -137,7 +137,7 @@ function App() {
                                   />
                               </FormCheck>
                           </td>
-                          <td>
+                          <td id="checkDesc">
                               {items.checkbox === true ? <span>Check</span> : null}
                           </td>
                       </tr>
