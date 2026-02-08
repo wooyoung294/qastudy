@@ -1,30 +1,39 @@
-name: Trigger Study Playwright E2E on PR
+name: Playwright E2E on PR
 
 on:
   pull_request:
-    branches: [ master ]
-    types: [ opened, synchronize, reopened ]
+    branches: [ master ]   # 네 기본 브랜치에 맞게 수정
 
 jobs:
-  trigger-e2e:
+  e2e-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out qastudy repo
+      - name: Checkout qastudy repo
         uses: actions/checkout@v4
 
-      - name: Trigger Playwright tests in Study repo
-        env:
-          GH_TOKEN: ${{ secrets.STUDY_REPO_TOKEN }}
+      - name: Checkout Study tests repo
+        uses: actions/checkout@v4
+        with:
+          repository: wooyoung294/Study
+          path: study-tests
+          token: ${{ secrets.STUDY_REPO_TOKEN }}  # 아까 만든 토큰
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        working-directory: study-tests
         run: |
-          curl -L \
-            -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            https://api.github.com/repos/wooyoung294/Study/actions/workflows/playwright.yml/dispatches \
-            -d '{
-              "ref": "master",
-              "inputs": {
-                "base_url": "https://blue-ground-0e078e000.3.azurestaticapps.net"
-              }
-            }'
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m playwright install --with-deps
+
+      - name: Run Playwright tests
+        working-directory: study-tests
+        env:
+          BASE_URL: https://blue-ground-0e078e000.3.azurestaticapps.net
+        run: |
+          pytest chapter2

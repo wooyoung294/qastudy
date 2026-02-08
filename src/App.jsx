@@ -36,7 +36,7 @@ function App() {
     return (
     <>
       <div style={{ display: 'flex', justifyContent:'center', alignItems: 'center', gap: '10px' }}>
-          <h1>Playwright</h1>
+          <h1>Playwright222</h1>
           <div>
               <Table style={{border:'1px solid #ccc'}}>
                   <thead>
@@ -47,7 +47,7 @@ function App() {
                   <tbody>
                       <tr>
                           <td>
-                              <Button id={"idBtn"} onClick={()=>clickHandle("idBtn")}>ID</Button>
+                              <Button id={"i2222dBtn"} onClick={()=>clickHandle("idBtn")}>ID</Button>
                           </td>
                           <td>
                               {items.idBtn === true ? <span>locator("#IdBtn")</span> : null}
@@ -71,7 +71,7 @@ function App() {
                       </tr>
                       <tr>
                           <td>
-                              <Button className={"myClass1"} onClick={()=>clickHandle("classBtn")}>Class</Button>
+                              <Button className={"myClass23"} onClick={()=>clickHandle("classBtn")}>Class</Button>
                           </td>
                           <td>
                               {items.classBtn === true ? <span>locator('.myClass')</span> : null}
